@@ -2,11 +2,17 @@
 
 module Bakery
   class BakeryShop
-    def vegemite_scroll(number)
-      case number
-      when 3 then 6.99
-      when 5 then 8.99
-      end
+    attr_reader :vs5, :mb11, :cf
+
+    def initialize
+      @vs5 = VegemiteScroll.new
+      @mb11 = BlueberryMuffin.new
+      @cf = Croissant.new
     end
+    
+    def vegemite_scroll(number)
+      @vs5.vegemite_scroll_pricing(number)
+    end
+
   end
 end
