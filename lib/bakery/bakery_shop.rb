@@ -9,10 +9,9 @@ module Bakery
       @mb11 = BlueberryMuffin.new
       @cf = Croissant.new
     end
-    
-    def vegemite_scroll(number)
-      @vs5.vegemite_scroll_pricing(number)
-    end
 
+    def get_price_of_vegemite_scroll(pieces)
+      @vs5.vegemite_scroll_pricing(pieces)
+    end
   end
 end

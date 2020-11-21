@@ -1,24 +1,42 @@
 module Bakery
   class VegemiteScroll
-    VEGEMITE_SCROLL_3 = 6.99
-    VEGEMITE_SCROLL_5 = 8.99
-    
-    def vegemite_scroll_pricing(number)
-      case number
-      when 1 then invalid_amount
-      when 2 then invalid_amount
-      when 3 then VEGEMITE_SCROLL_3
-      when 4 then invalid_amount
-      when 5 then VEGEMITE_SCROLL_5
-      when 6 then VEGEMITE_SCROLL_3 * 2
-      when 7 then invalid_amount
-      when 8 then VEGEMITE_SCROLL_3 + VEGEMITE_SCROLL_5
-      when 9 then VEGEMITE_SCROLL_3 * 3
-      when 10 then VEGEMITE_SCROLL_5 * 2
+    PACKAGE_OF_3 = 6.99
+    PACKAGE_OF_5 = 8.99
+    INVALID_AMOUNTS = [1, 2, 4, 7].freeze
+
+    def vegemite_scroll_pricing(pieces)
+      return invalid_amount if INVALID_AMOUNTS.include?(pieces)
+
+      case pieces % 5
+      when 0 then show_price_for_0_remainder(pieces)
+      when 1 then show_price_for_1_remainder(pieces)
+      when 2 then show_price_for_2_remainder(pieces)
+      when 3 then show_price_for_3_remainder(pieces)
+      when 4 then show_price_for_4_remainder(pieces)
       end
     end
 
-    private 
+    private
+
+    def show_price_for_0_remainder(pieces)
+      pieces / 5 * PACKAGE_OF_5
+    end
+
+    def show_price_for_1_remainder(pieces)
+      ((pieces / 5 - 1) * PACKAGE_OF_5) + (pieces - ((pieces / 5 - 1) * 5)) / 3 * PACKAGE_OF_3
+    end
+
+    def show_price_for_2_remainder(pieces)
+      ((pieces - 12) / 5 * PACKAGE_OF_5) + (4 * PACKAGE_OF_3)
+    end
+
+    def show_price_for_3_remainder(pieces)
+      (pieces / 5 * PACKAGE_OF_5) + PACKAGE_OF_3
+    end
+
+    def show_price_for_4_remainder(pieces)
+      ((pieces - 9) / 5 * PACKAGE_OF_5) + (3 * PACKAGE_OF_3)
+    end
 
     def invalid_amount
       "Exact amount can't be served"
