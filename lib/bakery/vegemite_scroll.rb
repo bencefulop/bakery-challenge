@@ -7,13 +7,7 @@ module Bakery
     def vegemite_scroll_pricing(pieces)
       return invalid_amount if INVALID_AMOUNTS.include?(pieces)
 
-      case pieces % 5
-      when 0 then show_price_for_0_remainder(pieces)
-      when 1 then show_price_for_1_remainder(pieces)
-      when 2 then show_price_for_2_remainder(pieces)
-      when 3 then show_price_for_3_remainder(pieces)
-      when 4 then show_price_for_4_remainder(pieces)
-      end
+      send("show_price_for_#{pieces % 5}_remainder", pieces)
     end
 
     private

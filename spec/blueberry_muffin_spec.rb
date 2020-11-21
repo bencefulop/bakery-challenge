@@ -9,7 +9,7 @@ RSpec.describe Bakery::BlueberryMuffin do
     it 'can tell the price of 2 blueberry muffins' do
       expect(subject.blueberry_muffin_pricing(2)).to eq(9.95)
     end
-  
+
     it '3 blueberry muffins is an invalid amount' do
       expect(subject.blueberry_muffin_pricing(3)).to eq("Exact amount can't be served")
     end
@@ -58,7 +58,6 @@ RSpec.describe Bakery::BlueberryMuffin do
       expect(subject.blueberry_muffin_pricing(14)).to eq(53.8)
     end
 
-
     it 'can tell the price of 15 blueberry muffins' do
       expect(subject.blueberry_muffin_pricing(15)).to eq(51.85)
     end
@@ -70,7 +69,7 @@ RSpec.describe Bakery::BlueberryMuffin do
     it 'can tell the price of 17 blueberry muffins' do
       expect(subject.blueberry_muffin_pricing(17)).to eq(61.8)
     end
- 
+
     it 'can tell the price of 18 blueberry muffins' do
       expect(subject.blueberry_muffin_pricing(18)).to eq(59.85)
     end
