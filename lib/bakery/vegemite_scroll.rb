@@ -67,7 +67,7 @@ module Bakery
     end
 
     def invalid_amount
-      { total: "Exact amount can't be served" }
+      { total: "Error: Vegemite Scroll exact amount can't be served" }
     end
   end
 end

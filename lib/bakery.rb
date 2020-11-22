@@ -7,6 +7,6 @@ require 'bakery/bakery_shop'
 require 'bakery/version'
 
 module Bakery
-  class Error < StandardError; end
+  # class Error < StandardError; end
   # Your code goes here...
 end

@@ -11,7 +11,7 @@ RSpec.describe Bakery::VegemiteScroll do
     end
 
     it '4 vegemite scrolls is an invalid amount' do
-      expect(subject.vegemite_scroll_pricing(4)[:total]).to eq("Exact amount can't be served")
+      expect(subject.vegemite_scroll_pricing(4)[:total]).to eq("Error: Vegemite Scroll exact amount can't be served")
     end
 
     it 'can tell the price of 5 vegemite scrolls' do
@@ -23,7 +23,7 @@ RSpec.describe Bakery::VegemiteScroll do
     end
 
     it '7 vegemite scrolls is an invalid amount' do
-      expect(subject.vegemite_scroll_pricing(7)[:total]).to eq("Exact amount can't be served")
+      expect(subject.vegemite_scroll_pricing(7)[:total]).to eq("Error: Vegemite Scroll exact amount can't be served")
     end
 
     it 'can tell the price of 8 vegemite scrolls' do

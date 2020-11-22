@@ -11,7 +11,7 @@ RSpec.describe Bakery::BlueberryMuffin do
     end
 
     it '3 blueberry muffins is an invalid amount' do
-      expect(subject.blueberry_muffin_pricing(3)[:total]).to eq("Exact amount can't be served")
+      expect(subject.blueberry_muffin_pricing(3)[:total]).to eq("Error: Blueberry Muffin exact amount can't be served")
     end
 
     it 'can tell the price of 4 blueberry muffins' do

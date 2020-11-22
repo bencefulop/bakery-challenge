@@ -104,7 +104,7 @@ module Bakery
     end
 
     def invalid_amount
-      { total: "Exact amount can't be served" }
+      { total: "Error: Blueberry Muffin exact amount can't be served" }
     end
   end
 end

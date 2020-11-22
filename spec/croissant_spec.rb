@@ -7,7 +7,7 @@ RSpec.describe Bakery::Croissant do
 
   context 'Pricing'  do
     it '2 croissants is an invalid amount' do
-      expect(subject.croissant_pricing(2)[:total]).to eq("Exact amount can't be served")
+      expect(subject.croissant_pricing(2)[:total]).to eq("Error: Croissant exact amount can't be served")
     end
 
     it 'can tell the price of 3 croissants' do
@@ -15,7 +15,7 @@ RSpec.describe Bakery::Croissant do
     end
 
     it '4 croissants is an invalid amount' do
-      expect(subject.croissant_pricing(4)[:total]).to eq("Exact amount can't be served")
+      expect(subject.croissant_pricing(4)[:total]).to eq("Error: Croissant exact amount can't be served")
     end
 
     it 'can tell the price of 5 croissants' do
@@ -27,7 +27,7 @@ RSpec.describe Bakery::Croissant do
     end
 
     it '7 croissants is an invalid amount' do
-      expect(subject.croissant_pricing(7)[:total]).to eq("Exact amount can't be served")
+      expect(subject.croissant_pricing(7)[:total]).to eq("Error: Croissant exact amount can't be served")
     end
 
     it 'can tell the price of 8 croissants' do

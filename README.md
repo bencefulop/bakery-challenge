@@ -1,42 +1,79 @@
-# Challenge Description
-
-TBA
-
 # Bakery
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bakery`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bakery'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install bakery
+This Bakery gem is my solution to the popular Bakery Coding challenge. It shows the total price and breakdown of bakery items.
 
 ## Usage
 
-TODO: Write usage instructions here
+To see the application in action `cd` to the `bakery` folder and run
 
-## Development
+```ruby
+bundle install
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+and then:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+bundle exec exe/bakery orders.txt
+```
+
+This command will output the pricing to `STDOUT`. If you edit the `orders.txt` file you can see the price of different quantities.
+
+## Challenge Description
+
+A bakery used to base the price of their produce on an individual item cost. So if a customer ordered 10 cross buns then they would be charged 10x the cost of single bun. The bakery has decided to start selling their produce prepackaged in bunches and charging the customer on a per pack basis. So if the shop sold vegemite scroll in packs of 3 and 5 and a customer ordered 8 they would get a pack of 3 and a pack of 5. The bakery currently sells the following products:
+
+| Name             | Code | Packs                                 |
+| ---------------- | ---- | ------------------------------------- |
+| Vegemite Scroll  | VS5  | 3 @ $6.99 // 5 @ $8.99                |
+| Blueberry Muffin | MB11 | 2 @ $9.95 // 5 @ $16.95 // 8 @ $24.95 |
+| Croissant        | CF   | 3 @ $5.95 // 5 @ $9.95 // 9 @ $16.99  |
+
+### Task:
+
+Given a customer order you are required to determine the cost and pack breakdown for each product.
+To save on shipping space each order should contain the minimal number of packs.
+
+### Input:
+
+Each order has a series of lines with each line containing the number of items followed by the product
+code. An example input:
+
+```
+10 VS5
+14 MB11
+13 CF
+```
+
+### Output:
+
+A successfully passing test(s) that demonstrates the following output:
+
+```
+10 VS5 $17.98
+2 x 5 $8.99
+
+14 MB11 $54.8
+1 x 8 $24.95
+3 x 2 $9.95
+
+13 CF $25.85
+2 x 5 $9.95
+1 x 3 $5.95
+```
+
+## Testing
+
+Tests were written out using `rspec` and can be run by typing
+
+```ruby
+rake
+```
+
+in the terminal.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bakery.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bencefulop/bakery-challenge.
 
 ## License
 
