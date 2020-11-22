@@ -10,20 +10,29 @@ module Bakery
       @cf = Croissant.new
     end
 
-    def get_price_of_vegemite_scroll(pieces)
+    def get_price_of_vs5(pieces)
       @vs5.vegemite_scroll_pricing(pieces)
     end
 
-    def get_price_of_blueberry_muffin(pieces)
+    def get_price_of_mb11(pieces)
       @mb11.blueberry_muffin_pricing(pieces)
     end
 
-    def get_price_of_croissant(pieces)
+    def get_price_of_cf(pieces)
       @cf.croissant_pricing(pieces)
     end
 
-    # TODO
-    # method to read orders from .txt
-    # send vegemite/muffin/croissant orders to methods
+    def load_orders(orders_file)
+      File.readlines(orders_file)
+          .map { |order| Array(order.split(' ')) }
+    end
+
+    def purchase_products(orders)
+      orders.each do |order|
+        puts send("get_price_of_#{order[1].downcase}", order[0].to_i)[:total]
+        puts send("get_price_of_#{order[1].downcase}", order[0].to_i)[:consists_of]
+        puts ''
+      end
+    end
   end
 end

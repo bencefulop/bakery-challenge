@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'bakery'
+
+cli = Bakery::BakeryShop.new
+orders = cli.load_orders(ARGV[0])
+cli.purchase_products(orders)
