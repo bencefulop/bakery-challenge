@@ -14,43 +14,117 @@ module Bakery
     private
 
     def show_price_for_0_remainder(pieces)
-      pieces / 9 * PACKAGE_OF_9
+      total_price = pieces / 9 * PACKAGE_OF_9
+      package_9_count = pieces / 9
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99"
+      }
     end
 
     def show_price_for_1_remainder(pieces)
-      (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_5 * 2)).round(2)
+      total_price = (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_5 * 2)).round(2)
+
+      package_5_count = 2
+      package_9_count = pieces / 9 - 1
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95"
+      }
     end
 
     def show_price_for_2_remainder(pieces)
-      (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_5 + PACKAGE_OF_3 * 2)).round(2)
+      total_price = (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_5 + PACKAGE_OF_3 * 2)).round(2)
+
+      package_3_count = 2
+      package_5_count = 1
+      package_9_count = pieces / 9 - 1
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def show_price_for_3_remainder(pieces)
-      ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_3).round(2)
+      total_price = ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_3).round(2)
+
+      package_3_count = 1
+      package_9_count = pieces / 9
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def show_price_for_4_remainder(pieces)
-      (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_3 + PACKAGE_OF_5 * 2)).round(2)
+      total_price = (((pieces / 9 - 1) * PACKAGE_OF_9) + (PACKAGE_OF_3 + PACKAGE_OF_5 * 2)).round(2)
+
+      package_3_count = 1
+      package_5_count = 2
+      package_9_count = pieces / 9 - 1
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def show_price_for_5_remainder(pieces)
-      ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_5).round(2)
+      total_price = ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_5).round(2)
+
+      package_5_count = 1
+      package_9_count = pieces / 9
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95"
+      }
     end
 
     def show_price_for_6_remainder(pieces)
-      ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_3 * 2).round(2)
+      total_price = ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_3 * 2).round(2)
+
+      package_3_count = 2
+      package_9_count = pieces / 9
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def show_price_for_7_remainder(pieces)
-      (((pieces / 9 - 1) * PACKAGE_OF_9) + ((PACKAGE_OF_3 * 2) + (PACKAGE_OF_5 * 2))).round(2)
+      total_price = (((pieces / 9 - 1) * PACKAGE_OF_9) + ((PACKAGE_OF_3 * 2) + (PACKAGE_OF_5 * 2))).round(2)
+
+      package_3_count = 2
+      package_5_count = 2
+      package_9_count = pieces / 9 - 1
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def show_price_for_8_remainder(pieces)
-      ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_5 + PACKAGE_OF_3).round(2)
+      total_price = ((pieces / 9 * PACKAGE_OF_9) + PACKAGE_OF_5 + PACKAGE_OF_3).round(2)
+
+      package_3_count = 1
+      package_5_count = 1
+      package_9_count = pieces / 9
+
+      {
+        total: "#{pieces} CF $#{total_price}",
+        consists_of: "#{package_9_count} X 9 $16.99\n#{package_5_count} X 5 $9.95\n#{package_3_count} X 3 $5.95"
+      }
     end
 
     def invalid_amount
-      "Exact amount can't be served"
+      { total: "Exact amount can't be served" }
     end
   end
 end

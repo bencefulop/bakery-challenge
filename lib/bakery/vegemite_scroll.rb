@@ -13,27 +13,61 @@ module Bakery
     private
 
     def show_price_for_0_remainder(pieces)
-      pieces / 5 * PACKAGE_OF_5
+      total_price = pieces / 5 * PACKAGE_OF_5
+      package_5_count = pieces / 5
+
+      {
+        total: "#{pieces} VS5 $#{total_price}",
+        consists_of: "#{package_5_count} X 5 $8.99"
+      }
     end
 
     def show_price_for_1_remainder(pieces)
-      ((pieces / 5 - 1) * PACKAGE_OF_5) + (pieces - ((pieces / 5 - 1) * 5)) / 3 * PACKAGE_OF_3
+      total_price = ((pieces / 5 - 1) * PACKAGE_OF_5) + (PACKAGE_OF_3 * 2)
+      package_5_count = (pieces / 5 - 1)
+      package_3_count = 2
+
+      {
+        total: "#{pieces} VS5 $#{total_price}",
+        consists_of: "#{package_5_count} X 5 $8.99\n#{package_3_count} X 3 $6.99"
+      }
     end
 
     def show_price_for_2_remainder(pieces)
-      ((pieces - 12) / 5 * PACKAGE_OF_5) + (4 * PACKAGE_OF_3)
+      total_price = ((pieces - 12) / 5 * PACKAGE_OF_5) + (4 * PACKAGE_OF_3)
+      package_5_count = (pieces - 12) / 5
+      package_3_count = 4
+
+      {
+        total: "#{pieces} VS5 $#{total_price}",
+        consists_of: "#{package_5_count} X 5 $8.99\n#{package_3_count} X 3 $6.99"
+      }
     end
 
     def show_price_for_3_remainder(pieces)
-      (pieces / 5 * PACKAGE_OF_5) + PACKAGE_OF_3
+      total_price = (pieces / 5 * PACKAGE_OF_5) + PACKAGE_OF_3
+      package_5_count = pieces / 5
+      package_3_count = 1
+
+      {
+        total: "#{pieces} VS5 $#{total_price}",
+        consists_of: "#{package_5_count} X 5 $8.99\n#{package_3_count} X 3 $6.99"
+      }
     end
 
     def show_price_for_4_remainder(pieces)
-      ((pieces - 9) / 5 * PACKAGE_OF_5) + (3 * PACKAGE_OF_3)
+      total_price = ((pieces - 9) / 5 * PACKAGE_OF_5) + (3 * PACKAGE_OF_3)
+      package_5_count = (pieces - 9) / 5
+      package_3_count = 3
+
+      {
+        total: "#{pieces} VS5 $#{total_price}",
+        consists_of: "#{package_5_count} X 5 $8.99\n#{package_3_count} X 3 $6.99"
+      }
     end
 
     def invalid_amount
-      "Exact amount can't be served"
+      { total: "Exact amount can't be served" }
     end
   end
 end
