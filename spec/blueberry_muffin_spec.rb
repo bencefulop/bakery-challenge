@@ -94,4 +94,9 @@ RSpec.describe Bakery::BlueberryMuffin do
       expect(subject.blueberry_muffin_pricing(23)[:total]).to eq('23 MB11 $76.8')
     end
   end
+  context 'Order components' do
+    it 'Provides order breakdown' do
+      expect(subject.blueberry_muffin_pricing(23)[:consists_of]).to eq("2 X 8 $24.95\n1 X 5 $16.95\n1 X 2 $9.95")
+    end
+  end
 end

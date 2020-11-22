@@ -114,4 +114,9 @@ RSpec.describe Bakery::Croissant do
       expect(subject.croissant_pricing(26)[:total]).to eq('26 CF $49.88')
     end
   end
+  context 'Order components' do
+    it 'Provides order breakdown' do
+      expect(subject.croissant_pricing(25)[:consists_of]).to eq("1 X 9 $16.99\n2 X 5 $9.95\n2 X 3 $5.95")
+    end
+  end
 end

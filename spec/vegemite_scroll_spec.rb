@@ -58,4 +58,9 @@ RSpec.describe Bakery::VegemiteScroll do
       expect(subject.vegemite_scroll_pricing(15)[:total]).to eq('15 VS5 $26.97')
     end
   end
+  context 'Order components' do
+    it 'Provides order breakdown' do
+      expect(subject.vegemite_scroll_pricing(11)[:consists_of]).to eq("1 X 5 $8.99\n2 X 3 $6.99")
+    end
+  end
 end
